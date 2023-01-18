@@ -2,15 +2,13 @@
 ##
 #
 ##
-
 function crear () {
     clear
 # VERIFICAR QUE ERES USUARIO ROOT
 if [ $(id -u) -eq 0 ]; then
 # SI LO ES, ENTONCES CREA EL USUARIO CON NOMBRE Y PASSWORD
     read -p "Introduce el nombre de usuario " nombre
-    read -p "Introduce la contraseña del usuario " password
-    useradd -p $password -L $nombre
+    adduser $nombre -q
     echo "El usuario añadido ha sido creado y está bloqueado."
     else
         echo "Debes ser usuario root"
@@ -22,7 +20,7 @@ function habilitar () {
     clear
     read -p "Introduce el nombre de usuario " nombre
 # Check de si el usuario existe
-    egrep "^$nombre" /etc/passwd >/dev/null
+    egrep "^$nombre" /etc/passwd >/dev/null 
 # $? -eq 0 = si existe , $? -eq 1 = no existe
 if [ $? -ne 0 ]; then
     echo "El usuario $nombre no existe, por favor pulsa 1 en el menú para crearlo"
@@ -30,19 +28,64 @@ if [ $? -ne 0 ]; then
 
 else
     # Grep simple para buscar ! delante del nombre del usuario en /etc/shadow que indica que está deshabilitado
-    if grep -q "$nombre:!" <<< "/etc/shadow"; then
-    usermod -U user1
+    if grep -q -i "$nombre:!" /etc/shadow; then
+    usermod -U $nombre
     else
-    echo "El usuario $nombre ya está habilitado"
+    echo "ERROR: El usuario $nombre ya estaba habilitado"
     read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
 
 fi
+echo "EL usuario $nombre ha sido habilitado"
+read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
 fi
+
 }
 
+function deshabilitar () {
+    clear
+    read -p "Introduce el nombre de usuario " nombre
+# Check de si el usuario existe
+    egrep "^$nombre" /etc/passwd >/dev/null 
+# $? -eq 0 = si existe , $? -eq 1 = no existe
+if [ $? -ne 0 ]; then
+    echo "El usuario $nombre no existe, por favor pulsa 1 en el menú para crearlo"
+    read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
+
+else
+    # Grep simple para buscar ! delante del nombre del usuario en /etc/shadow que indica que está deshabilitado
+    if grep -q -i "$nombre:!" /etc/shadow; then
+    echo "ERROR: El usuario $nombre ya estaba deshabilitado"
+    read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
+    else
+    usermod -L $nombre
 
 
+fi
+echo "EL usuario $nombre ha sido deshabilitado"
+read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
+fi
 
+}
+
+function cambiarpermisos () {
+   clear
+    read -p "Introduce el nombre de usuario " nombre
+# Check de si el usuario existe
+    egrep "^$nombre" /etc/passwd >/dev/null 
+# $? -eq 0 = si existe , $? -eq 1 = no existe
+if [ $? -eq 0 ]; then
+    read -p "Introduce un permiso para cambiar (Ej: 777, 640) " permiso
+    re='^[0-9]{3}$'    # Validador de que tenga 3 números
+else
+    echo "Error, no existe el usuario "
+    read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
+fi
+    if [[ $permiso =~ $re ]]; then
+    chmod +$permiso $nombre
+    echo "Se han actualizado los permisos "
+    read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
+    fi    
+}
 
 
 #-----------------------------------------------------Menú-----------------------------------------------------
