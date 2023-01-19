@@ -66,27 +66,73 @@ read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
 fi
 
 }
-
 function cambiarpermisos () {
-   clear
-    read -p "Introduce el nombre de usuario " nombre
+    clear
+    read -p "Introduce la ruta de la carpeta o archivo " ruta
+# Check de si existe la ruta
+    if [ ! -f "$ruta" ]; then
+    echo "La ruta $nombre no existe, por favor introduzca una ruta correctamente."
+    read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
+
+else
+        read -p "Introduce un permiso para cambiar (Ej: 777, 640) " permiso
+        re='^[0-9]{3}$'    # Validador de que tenga 3 números
+
+    if [[ $permiso =~ $re ]]; then
+        chmod +$permiso $ruta
+        echo "Se han actualizado los permisos "
+        read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
+fi
+fi
+
+}
+
+function copiaseguridad () {
+clear
+read -p "Introduce el nombre de usuario " nombre
 # Check de si el usuario existe
     egrep "^$nombre" /etc/passwd >/dev/null 
 # $? -eq 0 = si existe , $? -eq 1 = no existe
-if [ $? -eq 0 ]; then
-    read -p "Introduce un permiso para cambiar (Ej: 777, 640) " permiso
-    re='^[0-9]{3}$'    # Validador de que tenga 3 números
-else
-    echo "Error, no existe el usuario "
+if [ $? -ne 0 ]; then
+    echo "El usuario $nombre no existe, por favor pulsa 1 en el menú para crearlo"
     read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
+
+    else
+        echo "Creando una carpeta de copias de seguridad para el usuario $nombre en /copiaseguridad/ "
+        mkdir /copiaseguridad/
+        cp -r /home/$nombre /copiaseguridad/
+        echo "Se ha guardado una copia de seguridad existosa"
+        read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
+
 fi
-    if [[ $permiso =~ $re ]]; then
-    chmod +$permiso $nombre
-    echo "Se han actualizado los permisos "
-    read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
-    fi    
 }
 
+function conectados () {
+    echo "A continuación se muestran los usuarios conectados"
+    w -hu
+    read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
+}
+
+function espaciolibre () {
+    echo "A continuación se muestra el espacio en disco libre"
+    df -H
+    read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
+}
+
+function traceroute () {
+    read -p "Introduce una dirección IP para trazar su ruta " ip
+    # Validar IP
+    until [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]] 
+    do
+    echo "ERROR: Por favor, introduzca una IP con la sintáxis correcta"
+    read -p "Introduce una dirección IP para trazar su ruta " ip
+    done
+    echo "Trazando la ruta de la ip $ip "
+    traceroute $ip
+    read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
+
+
+}
 
 #-----------------------------------------------------Menú-----------------------------------------------------
 
