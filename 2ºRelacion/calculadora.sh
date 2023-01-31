@@ -19,14 +19,22 @@ else
   exit 1
 fi
 
-if [[ $operador == *@(+|-|*|/)* ]]; then
-
-# Operación
-resultado=$op1$operador$op2
-echo $resultado
+if [ "$operador" == "+" ]; then
+  resultado=$(($op1 + $op2))
+elif [ "$operador" == "-" ]; then
+  resultado=$(($op1 - $op2))
+elif [ "$operador" == "/" ]; then
+  resultado=$(($op1 / $op2))
+elif [ "$operador" == "*" ]; then
+  resultado=$(($op1 * $op2))
 else
-  echo "Introduce un operador correctamente ."
+  echo "Operador no válido"
   exit 1
 fi
+
+echo "El resultado es: $resultado"
+
+#!/bin/bash
+
 
 

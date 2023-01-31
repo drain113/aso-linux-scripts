@@ -1,4 +1,5 @@
 #!/bin/bash
+ 
 clear
 ip=$1
 # Validar IP
@@ -15,12 +16,14 @@ do
   # Construye la dirección IP actual
   ip="$segment1.$segment2.$segment3.$i"
 
-  # Haz múltiples pings a la IP actual
-  response=$(ping -c 4 $ip | grep "received" | awk -F',' '{ print $2 }' | awk '{ print $1 }')
+  # Escanear todas las IP
+  response=$(ping -W 0.09 -c 1 $ip | grep "received" | awk -F',' '{ print $2 }' | awk '{ print $1 }')
 
   # Si la respuesta es mayor a 0, la IP está en uso
   if [ $response -gt 0 ]; then
-    echo $ip is in use
+    echo $ip está en uso && echo $ip está en uso >> red-$1.txt
+  else
+    echo $ip no está en uso && echo $ip no está en uso >> red-$1.txt
   fi
 done
 
