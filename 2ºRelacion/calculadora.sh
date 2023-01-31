@@ -1,0 +1,32 @@
+#!/bin/bash
+clear
+
+# Introducir tres parámetros
+re='^[0-9]+$' # Validador de números
+
+read -p "Introduce el primer operando " op1
+if [[ $op1 =~ $re ]]; then
+read -p "Introduce el segundo operando " op2
+else
+  echo "Introduce un número entero correctamente ."
+  exit 1
+fi
+
+if [[ $op2 =~ $re ]]; then
+read -p "Indica la operación (+, -, *, /) " operador
+else
+  echo "Introduce un número entero correctamente ."
+  exit 1
+fi
+
+if [[ $operador == *@(+|-|*|/)* ]]; then
+
+# Operación
+resultado=$op1$operador$op2
+echo $resultado
+else
+  echo "Introduce un operador correctamente ."
+  exit 1
+fi
+
+
