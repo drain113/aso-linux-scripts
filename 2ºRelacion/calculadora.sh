@@ -1,4 +1,11 @@
 #!/bin/bash
+
+# 1.- Programar un script que acepte tres argumentos: operando1 operando2 operador, con
+# el objetivo de construir una calculadora “postorden”, donde el tercer argumento es la
+# operación a realizar (+,-,*,/) sobre los dos primeros argumentos. El resultado será
+# mostrado por pantalla de la siguiente forma, por ejemplo:
+# “Se ha realizado la operación: 3 + 5 = 8”
+
 clear
 
 # Introducir tres parámetros

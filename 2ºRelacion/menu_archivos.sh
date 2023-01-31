@@ -1,4 +1,17 @@
 #!/bin/bash
+
+# 2.- Presentar en pantalla el siguiente menú:
+# “1 – Dar permiso de ejecución a todos los archivos de un directorio”
+# “2 – Quitar permiso de ejecución a todos los archivos de un directorio”
+# “3 – Hacer copia de seguridad del directorio de trabajo de un usuario”
+# “4 – Obtener en un archivo los 20 inicios de sesión más recientes”
+# “0 – Salir”
+# Para los casos 1 y 2 se pedirá que el usuario introduzca un directorio por teclado.
+# En el caso 3, se pedirá que el usuario introduzca un nombre de usuario válido en el
+# sistema (comprobar). La copia se puede hacer mediante el comando tar
+# Para la opción 4, se puede emplear el comando last, obteniendo la salida por pantalla y
+# en un fichero llamado ultimos20.log, simultáneamente.
+
 function dar_permiso () {
     read -p "Introduce un directorio para dar permisos de ejecución " dar_dir
     chmod +x $dar_dir/*
