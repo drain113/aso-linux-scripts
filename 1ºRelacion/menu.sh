@@ -129,13 +129,11 @@ clear
     echo "Trazando la ruta de la ip $ip "
     traceroute $ip
     read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
+
     else
-        echo "ERROR: Por favor, introduzca una IP con la sintáxis correcta" OPC
+    echo "ERROR: Por favor, introduzca una IP con la sintáxis correcta"
+    read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
     fi
-
-
-
-}
 
 #-----------------------------------------------------Menú-----------------------------------------------------
 
