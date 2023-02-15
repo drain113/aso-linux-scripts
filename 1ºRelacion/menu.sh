@@ -131,8 +131,7 @@ clear
     traceroute $ip
     read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
     else
-        echo "ERROR: Por favor, introduzca una IP con la sintáxis correcta"
-    read -p "Introduce una dirección IP para trazar su ruta " ip
+        echo "ERROR: Por favor, introduzca una IP con la sintáxis correcta" OPC
     done
 
 
