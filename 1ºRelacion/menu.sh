@@ -125,15 +125,15 @@ function traceroute () {
 clear
     read -p "Introduce una dirección IP para trazar su ruta " ip
     # Validar IP
-    if [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then 
+    until [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]] 
+    do
+    echo "ERROR: Por favor, introduzca una IP con la sintáxis correcta"
+    read -p "Introduce una dirección IP para trazar su ruta " ip
+    done
     echo "Trazando la ruta de la ip $ip "
     traceroute $ip
     read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
 
-    else
-    echo "ERROR: Por favor, introduzca una IP con la sintáxis correcta"
-    read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
-    fi
 
 }
 
