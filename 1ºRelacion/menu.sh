@@ -122,7 +122,7 @@ clear
 }
 
 function traceroute () {
-
+    set -x
     read -p "Introduce una dirección IP para trazar su ruta " ip
     # Validar IP
     until [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]] 
