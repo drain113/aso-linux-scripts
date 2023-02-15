@@ -108,18 +108,21 @@ fi
 }
 
 function conectados () {
+clear
     echo "A continuación se muestran los usuarios conectados"
     w -hu
     read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
 }
 
 function espaciolibre () {
+clear
     echo "A continuación se muestra el espacio en disco libre"
     df -H
     read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
 }
 
 function traceroute () {
+clear
     read -p "Introduce una dirección IP para trazar su ruta " ip
     # Validar IP
     until [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]] 
