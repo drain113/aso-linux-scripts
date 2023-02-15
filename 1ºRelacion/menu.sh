@@ -70,7 +70,7 @@ function cambiarpermisos () {
     clear
     read -p "Introduce la ruta de la carpeta o archivo " ruta
 # Check de si existe la ruta
-    if [ ! -f "$ruta" ]; then
+    if [ ! -d "$ruta" ]; then
     echo "La ruta $ruta no existe, por favor introduzca una ruta correctamente."
     read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
 
