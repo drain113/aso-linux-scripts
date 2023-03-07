@@ -1,5 +1,27 @@
 #!/bin/bash
 clear 
+
+# --------- Función ayuda ---------
+
+function ayuda {
+  echo "Este script sirve para crear un nombre de usuario mediante su nombre, apellido y DNI."
+}
+
+while getopts "h" opt; do
+  case ${opt} in
+    h ) # Mostrar ayuda
+        ayuda
+        exit 0;;
+    \? ) # Exit 1 si la opción no es válida
+         echo "ERROR: Opción no válida: -$OPTARG" 1>&2
+         ayuda
+         exit 1;;
+  esac
+done
+
+# -----------------------------
+
+
 # Fichero de entrada
 echo "Ingrese el nombre del archivo de entrada (formato: nombre;apellido;DNI): "
 read input_file
