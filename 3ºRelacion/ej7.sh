@@ -6,6 +6,26 @@
 # Desde las 12:00 AM hastá las 19:59 PM será "Buenas tardes"
 # Desde las 20:00 PM hasta las 5:99 AM será "Buenas noches"
 
+# --------- Función ayuda ---------
+
+function ayuda {
+  echo "Este script sirve para decir por pantalla buenos días, buenas tardes o buenas noches según la hora del sistema."
+
+while getopts "h" opt; do
+  case ${opt} in
+    h ) # Mostrar ayuda
+        ayuda
+        exit 0;;
+    \? ) # Exit 1 si la opción no es válida
+         echo "ERROR: Opción no válida: -$OPTARG" 1>&2
+         ayuda
+         exit 1;;
+  esac
+done
+
+# -----------------------------
+
+
 # Establecemos la variable hora
 hora=$(date +%H)
 

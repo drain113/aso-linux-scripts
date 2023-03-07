@@ -10,6 +10,25 @@
 
 # - R_Vocales.txt -> contenido del fichero argumento, pasando todas las vocales a mayúsculas.
 
+# --------- Función ayuda ---------
+
+function ayuda {
+  echo "Este script sirve para cambiar el contenido de un archivo de distintas maneras. Minúsculas a mayúsculas y viceversa , eliminando las letras A y pasando todas las vocales a mayúsculas."
+
+while getopts "h" opt; do
+  case ${opt} in
+    h ) # Mostrar ayuda
+        ayuda
+        exit 0;;
+    \? ) # Exit 1 si la opción no es válida
+         echo "ERROR: Opción no válida: -$OPTARG" 1>&2
+         ayuda
+         exit 1;;
+  esac
+done
+
+# -----------------------------
+
 # Verificar el número de argumentos
 if [ $# -ne 1 ]; then
   echo "Número de argumentos incorrecto. Escriba los argumentos de siguiente manera: $0 <archivo>"

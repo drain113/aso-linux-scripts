@@ -5,7 +5,7 @@
 # --------- Función ayuda ---------
 
 function ayuda {
-  echo "Este script sirve para obtener el listado del directorio actual ordenado por nombre de fichero, en un fichero pasado como argumento."
+  echo "Este script sirve para Leer la pulsación de una tecla y decir si la tecla pulsada es un número o una letra, o no es ni número ni letra. El proceso se repetirá hasta introducir la tecla intro."
 }
 
 while getopts "h" opt; do
