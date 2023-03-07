@@ -6,6 +6,25 @@
 # contenido. En caso afirmativo nos mostrará el contenido en pantalla. Asegurar de que se
 # trata de un fichero y no un subdirectorio.
 
+# --------- Función ayuda ---------
+
+function ayuda {
+  echo "Este script sirve para mostrar contenido en pantalla de un directorio si existe."
+}
+
+while getopts "h" opt; do
+  case ${opt} in
+    h ) # Mostrar ayuda
+        ayuda
+        exit 0;;
+    \? ) # Exit 1 si la opción no es válida
+         echo "ERROR: Opción no válida: -$OPTARG" 1>&2
+         ayuda
+         exit 1;;
+  esac
+done
+
+# -----------------------------
 
 read -p "Introduce el directorio " dir
 read -p "Introduce el archivo " file

@@ -8,6 +8,25 @@
 
 # - Mostrará al final, el número de líneas totales del fichero, el número de palabras y el número de caracteres que cotiene el fichero
 
+# --------- Función ayuda ---------
+
+function ayuda {
+  echo "Este script recibe un fichero como argumento, mostrará su contenido, el final, número de lineas, número de palabras y número de caracteres."
+}
+
+while getopts "h" opt; do
+  case ${opt} in
+    h ) # Mostrar ayuda
+        ayuda
+        exit 0;;
+    \? ) # Exit 1 si la opción no es válida
+         echo "ERROR: Opción no válida: -$OPTARG" 1>&2
+         ayuda
+         exit 1;;
+  esac
+done
+
+# -----------------------------
 
 # Verificar el número de argumentos
 if [ $# -ne 1 ]; then

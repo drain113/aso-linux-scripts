@@ -2,6 +2,28 @@
 
 # Empleando un array o lista, realizar un script que reciba como argumento un directorio e introduzca en un array todos los ficheros que cotiene el directorio introducido como argumento. A continuación se pedirá por teclado que se introduzca un número entre 1 y el número máximo de elementos que contiene el array. Mediante una llamada a función, devolverá en pantalla el nombre del archivo que ocupa la posición introducida en el número seleccionado y el número de caracteres que tiene. El proceso de pedir un número se ha de repetir hasta introducir el valor 0 (cero) 
 
+
+# --------- Función ayuda ---------
+
+function ayuda {
+  echo "Este script sirve para mostrar todos los ficheros en un arrayrecibiendo como argumento un directorio."
+  echo "Además Mediante una llamada a función, devolverá en pantalla el nombre del archivo que ocupa la posición introducida en el número seleccionado y el número de caracteres que tiene. El proceso de pedir un número se ha de repetir hasta introducir el valor 0 (cero)"
+}
+
+while getopts "h" opt; do
+  case ${opt} in
+    h ) # Mostrar ayuda
+        ayuda
+        exit 0;;
+    \? ) # Exit 1 si la opción no es válida
+         echo "ERROR: Opción no válida: -$OPTARG" 1>&2
+         ayuda
+         exit 1;;
+  esac
+done
+
+# -----------------------------
+
 # Verificar si se pasó un argumento
 if [ $# -ne 1 ]; then
   echo "Número de argumentos incorrecto. Escriba el argumento de siguiente manera: $0 <directorio>"

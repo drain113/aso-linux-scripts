@@ -8,6 +8,26 @@
 
 clear
 
+# --------- Función ayuda ---------
+
+function ayuda {
+  echo "Este script acepta tres argumentos de operadores que permite calcular."
+}
+
+while getopts "h" opt; do
+  case ${opt} in
+    h ) # Mostrar ayuda
+        ayuda
+        exit 0;;
+    \? ) # Exit 1 si la opción no es válida
+         echo "ERROR: Opción no válida: -$OPTARG" 1>&2
+         ayuda
+         exit 1;;
+  esac
+done
+
+# -----------------------------
+
 # Introducir tres parámetros
 re='^[0-9]+$' # Validador de números
 

@@ -2,6 +2,27 @@
 ##
 #
 ##
+
+# --------- Función ayuda ---------
+
+function ayuda {
+  echo "Este script contiene un menú con distintas utilidades."
+}
+
+while getopts "h" opt; do
+  case ${opt} in
+    h ) # Mostrar ayuda
+        ayuda
+        exit 0;;
+    \? ) # Exit 1 si la opción no es válida
+         echo "ERROR: Opción no válida: -$OPTARG" 1>&2
+         ayuda
+         exit 1;;
+  esac
+done
+
+# -----------------------------
+
 function crear () {
     clear
 # VERIFICAR QUE ERES USUARIO ROOT

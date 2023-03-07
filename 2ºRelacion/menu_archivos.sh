@@ -12,6 +12,27 @@
 # Para la opción 4, se puede emplear el comando last, obteniendo la salida por pantalla y
 # en un fichero llamado ultimos20.log, simultáneamente.
 
+# --------- Función ayuda ---------
+
+function ayuda {
+  echo "Este script muestra un menú con distintas utilidades para administrar usuarios."
+}
+
+while getopts "h" opt; do
+  case ${opt} in
+    h ) # Mostrar ayuda
+        ayuda
+        exit 0;;
+    \? ) # Exit 1 si la opción no es válida
+         echo "ERROR: Opción no válida: -$OPTARG" 1>&2
+         ayuda
+         exit 1;;
+  esac
+done
+
+# -----------------------------
+
+
 function dar_permiso () {
     read -p "Introduce un directorio para dar permisos de ejecución " dar_dir
     chmod +x $dar_dir/*

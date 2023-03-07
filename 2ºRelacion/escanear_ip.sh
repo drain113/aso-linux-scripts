@@ -1,6 +1,27 @@
 #!/bin/bash
  
 clear
+
+# --------- Función ayuda ---------
+
+function ayuda {
+  echo "Este script sirve para escanear direcciones IP para saber si están en uso."
+}
+
+while getopts "h" opt; do
+  case ${opt} in
+    h ) # Mostrar ayuda
+        ayuda
+        exit 0;;
+    \? ) # Exit 1 si la opción no es válida
+         echo "ERROR: Opción no válida: -$OPTARG" 1>&2
+         ayuda
+         exit 1;;
+  esac
+done
+
+# -----------------------------
+
 ip=$1
 # Validar IP
 if [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then 

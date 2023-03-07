@@ -2,6 +2,26 @@
 
 # Leer la pulsación de una tecla y decir si la tecla pulsada es un número o una letra, o no es ni número ni letra. El proceso se repetirá hasta introducir la tecla intro.
 
+# --------- Función ayuda ---------
+
+function ayuda {
+  echo "Este script sirve para obtener el listado del directorio actual ordenado por nombre de fichero, en un fichero pasado como argumento."
+}
+
+while getopts "h" opt; do
+  case ${opt} in
+    h ) # Mostrar ayuda
+        ayuda
+        exit 0;;
+    \? ) # Exit 1 si la opción no es válida
+         echo "ERROR: Opción no válida: -$OPTARG" 1>&2
+         ayuda
+         exit 1;;
+  esac
+done
+
+# -----------------------------
+
 while true; do
     read -n 1 -p "Introduce una tecla (pulsa Enter para salir): " tecla
     echo ""
