@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Determinar los números primos entre dos números dados como argumentos
+
 clear
 
 # --------- Función ayuda ---------

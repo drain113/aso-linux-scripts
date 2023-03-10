@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Script para buscar los scripts del directorio de un usuario
+
 clear
 
 # --------- Función ayuda ---------

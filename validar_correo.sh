@@ -1,4 +1,5 @@
 #!/bin/bash
+ # Script para validar un correo electrónico según parametros declarados en el If.
 
 clear
 

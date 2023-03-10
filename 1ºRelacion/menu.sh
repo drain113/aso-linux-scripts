@@ -1,7 +1,16 @@
 #!/bin/bash
-##
-#
-##
+
+# Menú con varias funciones, entre ellas:
+# "1. Crear usuario "
+# "2. Habilitar usuario "
+# "3. Deshabilitar usuario "
+# "4. Cambiar permisos a un usuario "
+# "5. Copia de seguridad del directorio de trabajo de un usuario determinado "
+# "6. Usuarios conectados actualmente "
+# "7. Espacio libre en disco "
+# "8. Trazar ruta hacia una dirección"
+
+
 
 # --------- Función ayuda ---------
 

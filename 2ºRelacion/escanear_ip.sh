@@ -1,5 +1,7 @@
 #!/bin/bash
- 
+
+# Script para escanear direcciones IP y saber si están en uso o no.
+
 clear
 
 # --------- Función ayuda ---------
