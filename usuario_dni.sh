@@ -1,6 +1,9 @@
 #!/bin/bash
 clear 
 
+# Crear un nombre de usuario determinado por su primera letra del nombre, tres primeras del apellido y dos últimos dígitos del DNI
+# Esta información debe ser dada desde un archivo
+
 # --------- Función ayuda ---------
 
 function ayuda {

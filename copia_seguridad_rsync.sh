@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Crear copia de seguridad de todos los directorios del usuario y expulsar usuarios poniéndolos en nivel de seguridad 1.
-# Se debe comprimir con tar y ejecutar el script todos los días a cierta hora (4 AM).
+# Se debe copiar con rsync y ejecutar el script todos los días a cierta hora (4 AM).
 
 # --------- Función ayuda ---------
 
 function ayuda {
-  echo "Este script sirve para crear una copia de seguridad del directorio de usuario con TAR."
+  echo "Este script sirve para crear una copia de seguridad del directorio de usuario con rSync."
 }
 
 while getopts "h" opt; do
@@ -36,8 +36,8 @@ if [ $? -ne 0 ]; then
 else
 echo "Guardando copia de seguridad en /copias/"
 
-# Crear una copia de seguridad de todos los directorios del usuario, comprimiéndolo en un archivo tar
-tar -cvzf backup_$fecha.tar.gz /home/$usuario/
+# Crear una copia de seguridad de todos los directorios del usuario, copiándolos con rsync
+rsync -a /home/"$usuario" /copias/backup_"$fecha"
 
 # Expulsar a los usuarios, poniéndolos en nivel de seguridad 1
 for i in $(users); do
