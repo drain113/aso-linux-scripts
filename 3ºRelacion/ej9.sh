@@ -26,7 +26,7 @@ while getopts "h" opt; do
          exit 1;;
   esac
 done
-
+}
 # -----------------------------
 
 # Verificar el número de argumentos

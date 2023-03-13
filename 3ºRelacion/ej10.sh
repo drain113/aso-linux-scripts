@@ -18,7 +18,7 @@ while getopts "h" opt; do
          exit 1;;
   esac
 done
-
+}
 # -----------------------------
 
 read -p "Introduce el valor de X: " x
@@ -27,4 +27,4 @@ read -p "Introduce el valor de X: " x
 resultado=$((3*x*x + 5*x + 8))
 
 # Resultado
-echo "El resultado es: $resultado"
+echo "3($x)²+5($x)+8 = $resultado"
