@@ -161,7 +161,7 @@ function traceroute () {
     read -p "Introduce una dirección IP para trazar su ruta " ip
     done
     echo "Trazando la ruta de la ip $ip "
-    traceroute $ip
+    command traceroute $ip
     read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
 }
 
