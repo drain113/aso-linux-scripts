@@ -27,18 +27,21 @@ done
 while true
 do
     read -p "Escriba un valor para X: " x
-    if [[ $x -eq 99 ]]; then
+    if [[ $x -ge 99 ]]; then
         echo "El valor debe ser menor a 99"
-        break
+        exit 1
     fi
 
     read -p "Escriba un valor para Y: " y
-
+    if [[ $y -ge 99 ]]; then
+        echo "El valor debe ser menor a 99"
+        exit 1
+    fi
     for (( i=$x; i<=$y; i++ ))
     do
         echo -n "$i/$y "
         if [[ $i -eq $y ]]; then
-            break
+            exit 1
         fi
     done
 
