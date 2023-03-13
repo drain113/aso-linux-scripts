@@ -8,7 +8,7 @@ clear
 
 function ayuda {
   echo "Este script sirve para determinar los números primos entre dos."
-}
+
 
 while getopts "h" opt; do
   case ${opt} in
@@ -21,7 +21,7 @@ while getopts "h" opt; do
          exit 1;;
   esac
 done
-
+}
 # -----------------------------
 
 if [ $# -ne 2 ]; then
@@ -44,7 +44,7 @@ if ! [[ $num1 =~ ^[0-9]+$ ]] || ! [[ $num2 =~ ^[0-9]+$ ]] || [ $num1 -lt 0 ] || 
 fi
 
 # Que el primero numero sea menor / igual al segundo
-if [ $num1 -gt $num2 ]; then
+if [ ! $num1 -le $num2 ]; then
   echo "Error: El primer número debe ser menor o igual que el segundo número."
   ayuda
   exit 1

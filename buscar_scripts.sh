@@ -8,7 +8,7 @@ clear
 
 function ayuda {
   echo "Este script sirve para encontrar los scripts del directorio home de un usuario."
-}
+
 
 while getopts "h" opt; do
   case ${opt} in
@@ -21,7 +21,7 @@ while getopts "h" opt; do
          exit 1;;
   esac
 done
-
+}
 # -----------------------------
 
 contar_sh() {

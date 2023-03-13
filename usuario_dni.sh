@@ -8,7 +8,7 @@ clear
 
 function ayuda {
   echo "Este script sirve para crear un nombre de usuario mediante su nombre, apellido y DNI."
-}
+
 
 while getopts "h" opt; do
   case ${opt} in
@@ -21,7 +21,7 @@ while getopts "h" opt; do
          exit 1;;
   esac
 done
-
+}
 # -----------------------------
 
 

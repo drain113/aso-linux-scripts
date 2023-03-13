@@ -7,7 +7,7 @@
 
 function ayuda {
   echo "Este script sirve para crear una copia de seguridad del directorio de usuario con TAR."
-}
+
 
 while getopts "h" opt; do
   case ${opt} in
@@ -20,7 +20,7 @@ while getopts "h" opt; do
          exit 1;;
   esac
 done
-
+}
 # -----------------------------
 
 fecha=$(date +%Y-%m-%d_%H-%M-%S)

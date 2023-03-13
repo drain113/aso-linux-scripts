@@ -7,7 +7,7 @@ clear
 
 function ayuda {
   echo "Este script sirve para validar una dirección de correo electrónico."
-}
+
 
 while getopts "h" opt; do
   case ${opt} in
@@ -20,7 +20,7 @@ while getopts "h" opt; do
          exit 1;;
   esac
 done
-
+}
 # -----------------------------
 
 # Validar correo
