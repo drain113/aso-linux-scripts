@@ -163,8 +163,6 @@ function traceroute () {
     echo "Trazando la ruta de la ip $ip "
     traceroute $ip
     read -p "Introduce otra opción (pulsa cualquier tecla) " OPC
-
-
 }
 
 #-----------------------------------------------------Menú-----------------------------------------------------
