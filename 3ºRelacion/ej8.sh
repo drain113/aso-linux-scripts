@@ -18,7 +18,7 @@ while getopts "h" opt; do
          exit 1;;
   esac
 done
-
+}
 # -----------------------------
 
 # Debe determinar: Nombre de usuario (obtenido de variable de sistema), Directorio de trabajo (obtenido de variable de sistema) y Shell asociada al usuario.
